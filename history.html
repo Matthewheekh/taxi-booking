@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.orange-amber.min.css" />
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="icon" type="image/jpg" href="img/iconTaxi.png" />
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="material-icons iconTaxi">local_taxi</span>
+                <span class="mdl-layout-title">Pristine Cabs</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Pristine Cabs</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="index.html">Home Page</a>
+                <a class="mdl-navigation__link" href="history.html">Booking History</a>
+                <!--<a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>-->
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <!-- Your content goes here -->
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <h5><b>Future Bookings</b></h5>
+                    </div>
+                    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone allBookings" id="scheduled">
+                        <!-- First booking detail listed here -->
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--3-col">
+                                <div class="mdl-grid">
+                                    Name
+                                </div>
+                                <div class="mdl-grid">
+                                    Stop, date, distance, fare
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--8-col">
+                                <div class="mdl-grid">
+                                    Starting address:
+                                </div>
+                                <div class="mdl-grid">
+                                    Ending address:
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--1-col">
+                                <nav class="mdl-navigation">
+                                        <button
+                                            class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored"
+                                            onclick="bookingDetails()">
+                                            <i class="material-icons">info</i>
+                                        </button>
+                                    </a>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                        <h5><b>Commenced Bookings</b></h5>
+                    </div>
+                    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone allBookings" id="current">
+                        <!-- First booking detail listed here -->
+                        <li class="mdl-list__item mdl-list__item--three-line">
+                            <span class="mdl-list__item-primary-content">
+                                <span>Booking Name</span>
+                                <span class="mdl-list__item-text-body" id="dateTime">Booking Date</span>
+                            </span>
+                            <span class="mdl-list__item-secondary-content">
+                                <nav class="mdl-navigation">
+                                    <a class="mdl-navigation__link" href="details.html">
+                                        <button
+                                            class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored"
+                                            onclick="bookingDetails()">
+                                            <i class="material-icons">info</i>
+                                        </button>
+                                    </a>
+                                </nav>
+                            </span>
+                        </li>
+                        <!-- End of this booking detail -->
+                        <!-- Next booking detail listed here -->
+                        <li class="mdl-list__item mdl-list__item--three-line">
+                            <span class="mdl-list__item-primary-content">
+                                <span>Booking Name</span>
+                                <span class="mdl-list__item-text-body" id="dateTime">Booking Date </span>
+                            </span>
+                            <span class="mdl-list__item-secondary-content">
+                                <nav class="mdl-navigation">
+                                    <a class="mdl-navigation__link" href="details.html">
+                                        <button
+                                            class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored"
+                                            onclick="bookingDetails()">
+                                            <i class="material-icons">info</i>
+                                        </button>
+                                    </a>
+                                </nav>
+                            </span>
+                        </li>
+                    </div>
+                </div>
+
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                        <h5><b>Past Bookings</b></h5>
+                    </div>
+                    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone allBookings" id="past">
+                        <!-- First booking detail listed here -->
+                        <li class="mdl-list__item mdl-list__item--three-line">
+                            <span class="mdl-list__item-primary-content">
+                                <span>Booking Name</span>
+                                <span class="mdl-list__item-text-body" id="dateTime">Booking Date </span>
+                            </span>
+                            <span class="mdl-list__item-secondary-content">
+                                <nav class="mdl-navigation">
+                                    <a class="mdl-navigation__link" href="details.html">
+                                        <button
+                                            class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored"
+                                            onclick="bookingDetails()">
+                                            <i class="material-icons">info</i>
+                                        </button>
+                                    </a>
+                                </nav>
+                            </span>
+                        </li>
+                        <!-- End of this booking detail -->
+                        <!-- Next past booking detail listed here-->
+                        <li class="mdl-list__item mdl-list__item--three-line">
+                            <span class="mdl-list__item-primary-content">
+                                <span>Booking Name</span>
+                                <span class="mdl-list__item-text-body" id="dateTime">Booking Date </span>
+                            </span>
+                            <span class="mdl-list__item-secondary-content">
+                                <nav class="mdl-navigation">
+                                    <a class="mdl-navigation__link" href="details.html">
+                                        <button
+                                            class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored"
+                                            onclick="bookingDetails()">
+                                            <i class="material-icons">info</i>
+                                        </button>
+                                    </a>
+                                </nav>
+                            </span>
+                        </li>
+                        <!-- End of this booking detail-->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/shared.js"></script>
+    <script src="js/history.js"></script>
+</body>
+
+</html>

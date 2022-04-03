@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.orange-amber.min.css" />
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="icon" type="image/jpg" href="img/iconTaxi.png"/>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="js/services.js"></script>
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="material-icons iconTaxi">local_taxi</span>
+                <span class="mdl-layout-title">Pristine Cabs</span>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Pristine Cabs</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="index.html">Home Page</a>
+                <a class="mdl-navigation__link" href="history.html">Booking History</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <!-- Your content goes here -->
+                <div class="mdl-grid"></div>
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <div class="mdl-grid center">
+                            <div class="mdl-cell mdl-cell--10-col center">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="startLocation" required>
+                                    <label class="mdl-textfield__label" for="yourLocation">Your Location</label>
+                                    <span id="startError" class="mdl-textfield__error"></span>
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--2-col center">
+                                <button
+                                    class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" onclick="showMyLocation()">
+                                    <i class="material-icons">my_location</i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mdl-grid center">
+                            <div class="mdl-cell mdl-cell--10-col center">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="endLocation" required>
+                                    <label class="mdl-textfield__label" for="yourDestination">Your Destination</label>
+                                    <span id="endError" class="mdl-textfield__error"></span>
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--2-col center">
+
+                            </div>
+                        </div>
+                        <div class="mdl-grid"></div>
+                        <div class="mdl-grid center">
+                            <input type="datetime-local" id="dateTime">
+                        </div>
+                        <div class="mdl-grid"></div>
+                        <div class="mdl-grid center">
+                            <button
+                                class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent button confirmSelection"
+                                 onclick="confirmSelection()">
+                                Confirm Selections
+                            </button>
+                        </div>
+                        <div class="mdl-grid"></div>
+                        <div class="mdl-grid"></div>
+                        <div class="mdl-grid"></div>
+                        <div class="mdl-grid center">
+                            <div class="mdl-cell mdl-cell--10-col center">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="stopLocation">
+                                    <label class="mdl-textfield__label" for="addStop">Add A Stop</label>
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--2-col center">
+                                <button
+                                    class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" onclick="addStop()">
+                                    <i class="material-icons">add</i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mdl-grid"></div>
+                        <div class="mdl-grid"></div>
+                        <div class="mdl-grid center">
+                            <div class="mdl-cell mdl-cell--10-col center">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <select class="mdl-textfield__input" id="taxiType" name="taxiType">
+                                        <option value=""></option>
+                                        <option value="Car">Car</option>
+                                        <option value="SUV">SUV</option>
+                                        <option value="Van">Van</option>
+                                        <option value="Minibus">Minibus</option>
+                                    </select>
+                                    <label class="mdl-textfield__label" for="taxiType">Taxi Type</label>
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--2-col center">
+                                <button
+                                    class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" onclick="selectTaxi()">
+                                    <i class="material-icons">add</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--8-col" id="map"></div>
+                </div>
+                
+                <div class="mdl-grid" id="blackBox">
+                    <div class="mdl-cell mdl-cell--8-col overflow" id="bookingLocations">
+                        
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <div class="mdl-grid">
+                            <h5>
+                                Estimated Distance: &nbsp&nbsp&nbsp
+                            </h5>
+                            <span id="totalDistance">
+    
+                            </span>
+                        </div>
+                        <div class="mdl-grid">
+                            <h5>
+                                Total Fare: &nbsp&nbsp&nbsp
+                            </h5>
+                            <span id="totalFare">
+    
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--3-col center">
+                        <button
+                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent largerClearButton" onclick="clearData()">
+                            Clear
+                        </button>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col"></div>
+                    <div class="mdl-cell mdl-cell--3-col center">
+                        <button
+                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent largerSaveButton" onclick="saveData()">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/shared.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

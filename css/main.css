@@ -1,0 +1,111 @@
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button {
+    width: 203px;
+    font-weight: bold;
+}
+
+.displayBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    padding-top: 0px;
+    margin-left: 20px;
+    width: 200px;
+    height: 40px;
+    border: 0.15em solid rgb(255, 152, 0);
+    border-radius: 20px;
+    vertical-align: middle;
+}
+
+.largerSaveButton {
+    margin-left: 23px;
+    width: 300px;
+    height: 60px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.largerClearButton {
+    margin-left: 1px;
+    width: 300px;
+    height: 60px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.largerCancelButton {
+    margin-right: 23px;
+    width: 300px;
+    height: 60px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.largerButton {
+    width: 300px;
+    height: 60px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.confirmSelection {
+    width: 239px;
+}
+
+#map {
+    height: 600px;
+    border: 0.2em solid black;
+}
+
+.iconTaxi {
+    font-size: 36px;
+    padding-right: 10px;
+}
+
+#blackBox {
+    margin-left: 25px;
+    margin-right: 16px;
+    border: 0.2em solid black;
+}
+
+.overflow {
+    height: 150px;
+    overflow: auto;
+}
+
+.bigBlackBox {
+    padding-left: 50px;
+    padding-top: 29px;
+    padding-bottom: 30px;
+    padding-right: 50px;
+    border: 0.2em solid black;
+    height: 500px;
+}
+
+.overflowBigBlackBox {
+    height: 500px;
+    overflow: auto;
+}
+
+.verticalMiddle {
+    align-items: center;
+}
+
+.allBookings{
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 0.2em solid black;
+    height: 208px;
+    overflow: auto;
+}
+
+#mapDetail {
+    height: 500px;
+    border: 0.2em solid black;
+}

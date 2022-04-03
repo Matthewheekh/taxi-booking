@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.orange-amber.min.css" />
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="icon" type="image/jpg" href="img/iconTaxi.png" />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="material-icons iconTaxi">local_taxi</span>
+                <span class="mdl-layout-title">Pristine Cabs</span>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Pristine Cabs</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="index.html">Home Page</a>
+                <a class="mdl-navigation__link" href="history.html">Booking History</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <!-- Your content goes here -->
+                <div class="mdl-grid"></div>
+                <div class="mdl-grid"></div>
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--4-col bigBlackBox overflowBigBlackBox" id="locations">
+                        <h5>Start</h5>
+                        <li class="mdl-list__item mdl-list__item--three-line">
+                            <span class="mdl-list__item-primary-content">
+                                <span>Location Name</span>
+                                <span class="mdl-list__item-text-body" id="dateTime">Location Address</span>
+                            </span>
+                        </li>
+                        <h5>Stops</h5>
+                        <li class="mdl-list__item mdl-list__item--three-line">
+                            <span class="mdl-list__item-primary-content">
+                                <span>Location Name</span>
+                                <span class="mdl-list__item-text-body" id="dateTime">Location Address</span>
+                            </span>
+                        </li>
+                        <h5>End</h5>
+                        <li class="mdl-list__item mdl-list__item--three-line">
+                            <span class="mdl-list__item-primary-content">
+                                <span>Location Name</span>
+                                <span class="mdl-list__item-text-body" id="dateTime">Location Address</span>
+                            </span>
+                        </li>
+                    </div>
+                    <div class="mdl-cell mdl-cell--8-col blackBox" id="mapDetail"></div>
+                </div>
+                <div class="mdl-grid"></div>
+                <div class="mdl-grid"></div>
+                <div class="mdl-grid"></div>
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--4-col center">
+                        <h5 class="center"> Date: </h5><span class="displayBox" id="date"></span>
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col center ">
+                        <h5> Time: </h5><span class="displayBox" id="time"></span>
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col center">
+                        <h5>Number of Stops:</h5><span class="displayBox" id="stops"></span>
+                    </div>
+                </div>
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--4-col center">
+                        <h5>Estimated Distance: </h5><span class="displayBox" id="totalDistance"></span>
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col center">
+                        <h5>Type of Taxi:</h5><span class="displayBox" id="taxiType"></span>
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col center">
+                        <h5>Total Fare: </h5><span class="displayBox" id="totalFare"></span>
+                    </div>
+                </div>
+                <div class="mdl-grid"></div>
+                <div class="mdl-grid"></div>
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--3-col center">
+                        <nav class="mdl-navigation">
+                            <a class="mdl-navigation__link" href="history.html">
+                                <button
+                                    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent largerCancelButton"
+                                    onclick="back()">
+                                    Back
+                                </button>
+                            </a>
+                        </nav>
+                    </div>
+                    <div class="mdl-cell mdl-cell--1-col"></div>
+                    <div class="mdl-cell mdl-cell--4-col center">
+                        <div class="mdl-cell mdl-cell--10-col center">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <select class="mdl-textfield__input" id="taxiTypeChange" name="taxiTypeChange">
+                                    <option value=""></option>
+                                    <option value="Car">Car</option>
+                                    <option value="SUV">SUV</option>
+                                    <option value="Van">Van</option>
+                                    <option value="Minibus">Minibus</option>
+                                </select>
+                                <label class="mdl-textfield__label" for="taxiTypeChange">Change Taxi Type</label>
+                            </div>
+                        </div>
+                        <div class="mdl-cell mdl-cell--2-col center">
+                            <button
+                                class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored center"
+                                onclick="changeTaxi()">
+                            <i class="material-icons">add</i>
+                        </button>
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--1-col"></div>
+                    <div class="mdl-cell mdl-cell--3-col center">
+                        <nav class="mdl-navigation">
+                            <button
+                                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent largerSaveButton"
+                                onclick="cancelBooking()">
+                                Cancel Booking
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="js/shared.js"></script>
+    <script src="js/taxiData.js"></script>
+    <script src="js/details.js"></script>
+</body>
+
+</html>
